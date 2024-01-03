@@ -34,7 +34,7 @@ j  jep.Jep.init(Ljava/lang/ClassLoader;ZZZIIIIIII)J+0
 j  jep.Jep.<init>(Ljep/JepConfig;ZLjep/python/MemoryManager;)V+259
 j  jep.SharedInterpreter.<init>()V+8
 j  com.gettingusedtoit.springpractice.PythonInterpreter.<init>()V+67
-j  com.gettingusedtoit.springpractice.Helloworld.getPythonStock()Ljava/lang/String;+4
+j  com.gettingusedtoit.springpractice.controller.APIController.getPythonStock()Ljava/lang/String;+4
 j  java.lang.invoke.DirectMethodHandle$Holder.invokeVirtual(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;+10 java.base@21.0.1
 J 2363 c1 java.lang.invoke.LambdaForm$MH+0x000000011e007c00.invoke(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; java.base@21.0.1 (35 bytes) @ 0x0000000115bb9dcc [0x0000000115bb9cc0+0x000000000000010c]
 J 3844 c1 jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object; java.base@21.0.1 (92 bytes) @ 0x0000000115e38144 [0x0000000115e37dc0+0x0000000000000384]
@@ -101,7 +101,7 @@ j  jep.Jep.init(Ljava/lang/ClassLoader;ZZZIIIIIII)J+0
 j  jep.Jep.<init>(Ljep/JepConfig;ZLjep/python/MemoryManager;)V+259
 j  jep.SharedInterpreter.<init>()V+8
 j  com.gettingusedtoit.springpractice.PythonInterpreter.<init>()V+67
-j  com.gettingusedtoit.springpractice.Helloworld.getPythonStock()Ljava/lang/String;+4
+j  com.gettingusedtoit.springpractice.controller.APIController.getPythonStock()Ljava/lang/String;+4
 j  java.lang.invoke.DirectMethodHandle$Holder.invokeVirtual(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;+10 java.base@21.0.1
 J 2363 c1 java.lang.invoke.LambdaForm$MH+0x000000011e007c00.invoke(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object; java.base@21.0.1 (35 bytes) @ 0x0000000115bb9dcc [0x0000000115bb9cc0+0x000000000000010c]
 J 3844 c1 jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object; java.base@21.0.1 (92 bytes) @ 0x0000000115e38144 [0x0000000115e37dc0+0x0000000000000384]

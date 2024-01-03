@@ -1,5 +1,6 @@
-package com.gettingusedtoit.springpractice;
+package com.gettingusedtoit.springpractice.controller;
 
+import com.gettingusedtoit.springpractice.PythonInterpreter;
 import com.gettingusedtoit.springpractice.controller.model.StockData;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -7,19 +8,55 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
 @RestController
 //allow cross origin requeusts
 @CrossOrigin(origins = "*")
-public class Helloworld {
+public class APIController {
 
     private static Connection connection = getConnection();;
 
-    @GetMapping("login")
-    public List<String> hi() {
-        return List.of("Hello", "World");
+    @PostMapping("register")
+    public ResponseEntity<List<String>> register(@RequestBody Map<String, String> body) throws SQLException {
+        System.out.println("correct");
+        String email = (String) body.get("email");
+        String password = (String) body.get("password");
+        System.out.println(email + " " + password);
+        PreparedStatement check = connection.prepareStatement("SELECT * FROM stockdb.Users WHERE email = \"" + email + "\"");
+        ResultSet res = check.executeQuery();
+        if (res.next()) {
+            return ResponseEntity.status(HttpStatus.ALREADY_REPORTED).body(List.of("User exists"));
+        }
+        else {
+            PreparedStatement stmt = connection.prepareStatement("INSERT INTO stockdb.Users (email, password) VALUES (\"" +
+                    email + "\", \"" + password + "\")");
+            stmt.executeUpdate();
+        }
+//        ResultSet res =
+//        ResultSet res = stmt.executeQuery();
+        return ResponseEntity.ok(Arrays.asList("Hi", "Bob"));
+    }
+
+    @PostMapping("login")
+    public ResponseEntity<List<String>> login(@RequestBody Map<String, String> body) throws SQLException {
+        String email = (String) body.get("email");
+        String password = (String) body.get("password");
+        System.out.println(email + " " + password);
+        PreparedStatement check = connection.prepareStatement("SELECT * FROM stockdb.Users WHERE email = \"" + email + "\"");
+        ResultSet res = check.executeQuery();
+        if (res.next()) {
+            String truePassword = res.getString("password");
+            if (truePassword.equals(password)) {
+                return ResponseEntity.status(HttpStatus.OK).body(List.of("Success"));
+            }
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(List.of("Wrong password"));
+        }
+        else {
+            return ResponseEntity.status(HttpStatus.ALREADY_REPORTED).body(List.of("User doesn't exist"));
+        }
     }
 
     @PostMapping("student")

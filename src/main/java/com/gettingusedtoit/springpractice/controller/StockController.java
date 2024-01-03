@@ -23,7 +23,7 @@ import java.util.ArrayList;
 @EnableScheduling
 public class StockController {
 
-//    static String[] stocks = {"AAPL", "MSFT", "TSLA"};
+    //    static String[] stocks = {"AAPL", "MSFT", "TSLA"};
 //    static ArrayList<String> stocks = new ArrayList<>();
 //    static {
 //        stocks.add("AAPL");
@@ -59,10 +59,10 @@ public class StockController {
 //                 Math.round(Math.random()*50000)/100.0, (int) (Math.random()*100));
         ArrayList<String> stocks = new ArrayList<>(StockService.getStocks().keySet());
         if (stocks.isEmpty()) return;
-        System.out.println("TESTING " +  StockService.getStocks());
+        System.out.println("TESTING " + StockService.getStocks());
         String name = stocks.get((i++) % stocks.size());
-                StockData sampleStock = new StockData(name, Math.round(Math.random()*50000)/100.0, (int) (Math.random()*100),
-                 Math.round(Math.random()*50000)/100.0, (int) (Math.random()*100));
+        StockData sampleStock = new StockData(name, Math.round(Math.random() * 50000) / 100.0, (int) (Math.random() * 100),
+                Math.round(Math.random() * 50000) / 100.0, (int) (Math.random() * 100));
 //        StockData sampleStock = new StockData(stocks[(i++) % stocks.length], 12, (int) (Math.random()*100),
 //                 Math.random()*500, (int) (Math.random()*100));
         simpMessagingTemplate.convertAndSend("/topic/" + name, sampleStock);
